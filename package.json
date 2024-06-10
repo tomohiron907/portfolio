@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://tomohiron907.github.io/portfolio/",
   "scripts": {
+    "deploy": "rm -rf docs && npm run build && mv build docs",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -11,7 +13,8 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sass": "^1.68.0"
   },
   "devDependencies": {
     "@types/react": "18.2.15",
