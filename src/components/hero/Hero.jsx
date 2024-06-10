@@ -74,7 +74,7 @@ const Hero = () => {
         3Dprint Programming Design Math 
       </motion.div>
       <div className="imageContainer">
-        <img src="/profile.png" alt="" />
+        <img src="/portfolio/profile.png" alt="" />
       </div>
     </div>
   );
