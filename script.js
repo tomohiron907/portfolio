@@ -65,7 +65,9 @@ function initializeGraph() {
         .force("charge", d3.forceManyBody().strength(-200))
         .force("collide", d3.forceCollide().radius(d => d.size + 10))
         .force("radial", d3.forceRadial(width/3, width/2, height/2).strength(0.5))
-        .force("center", d3.forceCenter(width / 2, height / 2));
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("x", d3.forceX(width / 2).strength(0.1))
+        .force("y", d3.forceY(height / 2).strength(0.1));
 
     // Create the links
     link = svg.append("g")
@@ -136,6 +138,12 @@ function initializeGraph() {
 
     // Update positions on each tick
     simulation.on("tick", () => {
+        // ノードが画面外にはみ出ないように制限
+        graphData.nodes.forEach(d => {
+            d.x = Math.max(d.size/2, Math.min(width - d.size/2, d.x));
+            d.y = Math.max(d.size/2, Math.min(height - d.size/2, d.y));
+        });
+
         link
             .attr("x1", d => d.source.x)
             .attr("y1", d => d.source.y)
