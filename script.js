@@ -105,7 +105,11 @@ function initializeGraph() {
         .attr("x", d => d.x)
         .attr("y", d => d.y)
         .attr("text-anchor", "middle")
-        .attr("dy", d => -(d.size/2 - 5));
+        .attr("dy", d => -(d.size/2 + 10))
+        .style("fill", "white")
+        .style("font-family", "Arial, sans-serif")
+        .style("font-size", "14px")
+        .style("font-weight", "bold");
 
     // Update positions on each tick
     simulation.on("tick", () => {

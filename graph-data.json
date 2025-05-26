@@ -1,32 +1,39 @@
 {
     "nodes": [
         {
-            "id": "n1",
-            "name": "Node 1",
-            "connections": ["n2", "n3", "n4"],
+            "id": "main",
+            "name": "Taniguchi Tomohiro",
+            "connections": ["X"],
             "size": 100,
             "image": "resources/twitter_profile_image.PNG"
         },
         {
-            "id": "n2",
-            "name": "Node 2",
-            "connections": ["n1", "n3"],
-            "size": 40,
-            "image": "resources/node2.png"
+            "id": "X",
+            "name": "X",
+            "connections": ["main"],
+            "size": 60,
+            "image": "resources/X_icon2.png"
         },
         {
-            "id": "n3",
-            "name": "Node 3",
-            "connections": ["n1", "n2", "n4"],
-            "size": 40,
-            "image": "resources/node3.png"
+            "id": "GitHub",
+            "name": "GitHub",
+            "connections": ["main"],
+            "size": 60,
+            "image": "resources/github-mark-white.png"
         },
         {
-            "id": "n4",
-            "name": "Node 4",
-            "connections": ["n1", "n3"],
-            "size": 40,
-            "image": "resources/node4.png"
+            "id": "Instagram",
+            "name": "Instagram",
+            "connections": ["main"],
+            "size": 60,
+            "image": "resources/instagram_icon.png"
+        },
+        {
+            "id": "Qiita",
+            "name": "Qiita",
+            "connections": ["main"],
+            "size": 60,
+            "image": "resources/qiita_icon.png"
         }
     ]
 } 
