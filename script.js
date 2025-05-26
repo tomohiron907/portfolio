@@ -6,6 +6,10 @@ let graphData = {
 
 // Function to process the loaded JSON data
 function processGraphData(data) {
+    // スマートフォン表示時のサイズ調整
+    const isMobile = window.innerWidth <= 768;
+    const sizeMultiplier = isMobile ? 0.6 : 1;
+
     // Convert the JSON data into the format needed for D3
     graphData.nodes = data.nodes.map(node => ({
         id: node.id,
@@ -13,7 +17,7 @@ function processGraphData(data) {
         x: 0,
         y: 0,
         color: "#" + Math.floor(Math.random()*16777215).toString(16),
-        size: node.size || 30,  // 画像サイズのデフォルト値を大きくする
+        size: (node.size || 30) * sizeMultiplier,  // サイズを調整
         image: node.image || null,
         url: node.url || null,  // URLプロパティを追加
         // mainノードを中央に固定
