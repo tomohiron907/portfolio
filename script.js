@@ -76,8 +76,8 @@ function initializeGraph() {
         .data(graphData.links)
         .enter()
         .append("line")
-        .attr("stroke", "#999")
-        .attr("stroke-width", 2);
+        .attr("stroke", isMobile ? "#666" : "#999")  // スマホ版では線の色を薄く
+        .attr("stroke-width", isMobile ? 1 : 2);     // スマホ版では線を細く
 
     // Create clip path for circular images
     svg.append("defs")
