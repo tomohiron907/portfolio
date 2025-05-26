@@ -107,13 +107,21 @@ function initializeGraph() {
         .append("g")
         .call(d3.drag()
             .on("start", (event, d) => {
-                if (d.id !== "main") dragstarted(event, d);
+                if (d.id !== "main") {
+                    dragstarted(event, d);
+                    // ドラッグ開始時に透明度を更新
+                    updateNodeOpacity(d);
+                }
             })
             .on("drag", (event, d) => {
                 if (d.id !== "main") dragged(event, d);
             })
             .on("end", (event, d) => {
-                if (d.id !== "main") dragended(event, d);
+                if (d.id !== "main") {
+                    dragended(event, d);
+                    // ドラッグ終了時に全てのノードを元の透明度に戻す
+                    resetNodeOpacity();
+                }
             }))
         .style("cursor", d => d.id === "main" ? "default" : (d.url ? "pointer" : "default"))
         .on("click", (event, d) => {
@@ -137,6 +145,7 @@ function initializeGraph() {
         .data(graphData.nodes)
         .enter()
         .append("text")
+        .attr("class", "node-label")  // クラスを追加して後で参照できるようにする
         .text(d => d.name)
         .attr("x", d => d.x)
         .attr("y", d => d.y)
@@ -186,6 +195,51 @@ function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+}
+
+// ノードの透明度を更新する関数
+function updateNodeOpacity(draggedNode) {
+    // ドラッグ中のノードと直接接続されているノードのIDを取得
+    const connectedNodeIds = new Set();
+    graphData.links.forEach(link => {
+        if (link.source.id === draggedNode.id) {
+            connectedNodeIds.add(link.target.id);
+        } else if (link.target.id === draggedNode.id) {
+            connectedNodeIds.add(link.source.id);
+        }
+    });
+
+    // 全てのノードの透明度を更新
+    node.style("opacity", d => {
+        if (d.id === draggedNode.id || connectedNodeIds.has(d.id)) {
+            return 1; // ドラッグ中のノードと接続ノードは完全に表示
+        }
+        return 0.1; // その他のノードは暗く表示
+    });
+
+    // リンクの透明度も更新
+    link.style("opacity", d => {
+        if (d.source.id === draggedNode.id || d.target.id === draggedNode.id) {
+            return 1;
+        }
+        return 0.1;
+    });
+
+    // テキストラベルの透明度も更新
+    svg.selectAll(".node-label")
+        .style("opacity", d => {
+            if (d.id === draggedNode.id || connectedNodeIds.has(d.id)) {
+                return 1;
+            }
+            return 0.1;
+        });
+}
+
+// ノードの透明度をリセットする関数
+function resetNodeOpacity() {
+    node.style("opacity", 1);
+    link.style("opacity", 1);
+    svg.selectAll(".node-label").style("opacity", 1);
 }
 
 // Load the JSON data
