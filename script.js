@@ -141,7 +141,7 @@ function initializeGraph() {
         .attr("x", d => d.x)
         .attr("y", d => d.y)
         .attr("text-anchor", "middle")
-        .attr("dy", d => -(d.size/2 + 10))
+        .attr("dy", d => -(d.size/2 + (isMobile ? 3 : 10)))  // スマホ版では間隔を小さく
         .style("fill", "white")
         .style("font-family", "Arial, sans-serif")
         .style("font-size", "14px")
