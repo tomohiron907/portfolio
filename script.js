@@ -14,7 +14,8 @@ function processGraphData(data) {
         y: 0,
         color: "#" + Math.floor(Math.random()*16777215).toString(16),
         size: node.size || 30,  // 画像サイズのデフォルト値を大きくする
-        image: node.image || null  // 画像パスを追加
+        image: node.image || null,
+        url: node.url || null  // URLプロパティを追加
     }));
 
     // Create links from connections
@@ -84,7 +85,13 @@ function initializeGraph() {
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
-            .on("end", dragended));
+            .on("end", dragended))
+        .style("cursor", d => d.url ? "pointer" : "default")  // URLがある場合はポインターカーソルを表示
+        .on("click", (event, d) => {
+            if (d.url) {
+                window.open(d.url, '_blank');  // 新しいタブでURLを開く
+            }
+        });
 
     // Add images to nodes with clip path
     node.append("image")

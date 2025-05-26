@@ -5,35 +5,40 @@
             "name": "Taniguchi Tomohiro",
             "connections": ["X"],
             "size": 100,
-            "image": "resources/twitter_profile_image.PNG"
+            "image": "resources/twitter_profile_image.PNG",
+            "url": ""
         },
         {
             "id": "X",
             "name": "X",
             "connections": ["main"],
             "size": 60,
-            "image": "resources/X_icon2.png"
+            "image": "resources/X_icon2.png",
+            "url": "https://x.com/tamutamu3D"
         },
         {
             "id": "GitHub",
             "name": "GitHub",
             "connections": ["main"],
             "size": 60,
-            "image": "resources/github-mark-white.png"
+            "image": "resources/github-mark-white.png",
+            "url": "https://github.com/tomohiron907"
         },
         {
             "id": "Instagram",
             "name": "Instagram",
             "connections": ["main"],
             "size": 60,
-            "image": "resources/instagram_icon.png"
+            "image": "resources/instagram_icon.png",
+            "url": "https://www.instagram.com/tamutamu3d/?next=%2F"
         },
         {
             "id": "Qiita",
             "name": "Qiita",
-            "connections": ["main"],
+            "connections": ["main"],    
             "size": 60,
-            "image": "resources/qiita_icon.png"
+            "image": "resources/qiita_icon.png",
+            "url": "https://qiita.com/tomohiron907"
         }
     ]
 } 
