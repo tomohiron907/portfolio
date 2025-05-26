@@ -4,12 +4,14 @@ let graphData = {
     links: []
 };
 
+// スマートフォン表示時の調整パラメータ
+const isMobile = window.innerWidth <= 768;
+const sizeMultiplier = isMobile ? 0.6 : 1;
+const forceMultiplier = isMobile ? 0.5 : 1;  // 力の強さの調整係数
+const edgeDistance = isMobile ? 120 : 180;   // エッジの長さの調整
+
 // Function to process the loaded JSON data
 function processGraphData(data) {
-    // スマートフォン表示時のサイズ調整
-    const isMobile = window.innerWidth <= 768;
-    const sizeMultiplier = isMobile ? 0.6 : 1;
-
     // Convert the JSON data into the format needed for D3
     graphData.nodes = data.nodes.map(node => ({
         id: node.id,
@@ -17,10 +19,9 @@ function processGraphData(data) {
         x: 0,
         y: 0,
         color: "#" + Math.floor(Math.random()*16777215).toString(16),
-        size: (node.size || 30) * sizeMultiplier,  // サイズを調整
+        size: (node.size || 30) * sizeMultiplier,
         image: node.image || null,
-        url: node.url || null,  // URLプロパティを追加
-        // mainノードを中央に固定
+        url: node.url || null,
         fx: node.id === "main" ? width/2 : null,
         fy: node.id === "main" ? height/2 : null
     }));
@@ -61,13 +62,13 @@ let simulation, link, node;
 function initializeGraph() {
     // Create the force simulation
     simulation = d3.forceSimulation(graphData.nodes)
-        .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(180))
-        .force("charge", d3.forceManyBody().strength(-200))
+        .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(edgeDistance))
+        .force("charge", d3.forceManyBody().strength(-200 * forceMultiplier))
         .force("collide", d3.forceCollide().radius(d => d.size + 10))
-        .force("radial", d3.forceRadial(width/3, width/2, height/2).strength(0.5))
+        .force("radial", d3.forceRadial(width/3, width/2, height/2).strength(0.5 * forceMultiplier))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("x", d3.forceX(width / 2).strength(0.1))
-        .force("y", d3.forceY(height / 2).strength(0.1));
+        .force("x", d3.forceX(width / 2).strength(0.1 * forceMultiplier))
+        .force("y", d3.forceY(height / 2).strength(0.1 * forceMultiplier));
 
     // Create the links
     link = svg.append("g")
