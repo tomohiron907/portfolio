@@ -12,7 +12,7 @@
             "id": "X",
             "name": "X",
             "connections": ["main", "G-coordinator"],
-            "size": 80,
+            "size": 100,
             "image": "resources/X_icon2.png",
             "url": "https://x.com/tamutamu3D"
         },

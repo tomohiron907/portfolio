@@ -62,13 +62,23 @@ let simulation, link, node;
 function initializeGraph() {
     // Create the force simulation
     simulation = d3.forceSimulation(graphData.nodes)
-        .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(edgeDistance))
-        .force("charge", d3.forceManyBody().strength(-200 * forceMultiplier))
+        .force("link", d3.forceLink(graphData.links)
+            .id(d => d.id)
+            .distance(d => {
+                // Xとmainの間のエッジの場合は50、それ以外は通常の距離
+                if ((d.source.id === 'X' && d.target.id === 'main') || 
+                    (d.source.id === 'main' && d.target.id === 'X')) {
+                    return 50;
+                }
+                return edgeDistance;
+            })
+            .strength(1))  // リンクの強度を最大に設定
+        .force("charge", d3.forceManyBody().strength(-50 * forceMultiplier))  // 反発力を弱める
         .force("collide", d3.forceCollide().radius(d => d.size + 10))
-        .force("radial", d3.forceRadial(width/3, width/2, height/2).strength(0.5 * forceMultiplier))
+        .force("radial", d3.forceRadial(width/3, width/2, height/2).strength(0.1 * forceMultiplier))  // 放射状の力を弱める
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("x", d3.forceX(width / 2).strength(0.1 * forceMultiplier))
-        .force("y", d3.forceY(height / 2).strength(0.1 * forceMultiplier));
+        .force("x", d3.forceX(width / 2).strength(0.05 * forceMultiplier))  // 位置固定の力を弱める
+        .force("y", d3.forceY(height / 2).strength(0.05 * forceMultiplier));  // 位置固定の力を弱める
 
     // Create the links
     link = svg.append("g")
