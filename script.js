@@ -48,7 +48,8 @@ const height = window.innerHeight;
 const svg = d3.select("#graph-container")
     .append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .style("background-color", "#1a1a1a");  // 背景色を設定
 
 let simulation, link, node;
 
