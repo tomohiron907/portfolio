@@ -15,7 +15,10 @@ function processGraphData(data) {
         color: "#" + Math.floor(Math.random()*16777215).toString(16),
         size: node.size || 30,  // 画像サイズのデフォルト値を大きくする
         image: node.image || null,
-        url: node.url || null  // URLプロパティを追加
+        url: node.url || null,  // URLプロパティを追加
+        // mainノードを中央に固定
+        fx: node.id === "main" ? width/2 : null,
+        fy: node.id === "main" ? height/2 : null
     }));
 
     // Create links from connections
@@ -53,8 +56,10 @@ let simulation, link, node;
 function initializeGraph() {
     // Create the force simulation
     simulation = d3.forceSimulation(graphData.nodes)
-        .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(150))
-        .force("charge", d3.forceManyBody().strength(-400))
+        .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(180))
+        .force("charge", d3.forceManyBody().strength(-200))
+        .force("collide", d3.forceCollide().radius(d => d.size + 10))
+        .force("radial", d3.forceRadial(width/3, width/2, height/2).strength(0.5))
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     // Create the links
@@ -83,13 +88,19 @@ function initializeGraph() {
         .enter()
         .append("g")
         .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended))
-        .style("cursor", d => d.url ? "pointer" : "default")  // URLがある場合はポインターカーソルを表示
+            .on("start", (event, d) => {
+                if (d.id !== "main") dragstarted(event, d);
+            })
+            .on("drag", (event, d) => {
+                if (d.id !== "main") dragged(event, d);
+            })
+            .on("end", (event, d) => {
+                if (d.id !== "main") dragended(event, d);
+            }))
+        .style("cursor", d => d.id === "main" ? "default" : (d.url ? "pointer" : "default"))
         .on("click", (event, d) => {
             if (d.url) {
-                window.open(d.url, '_blank');  // 新しいタブでURLを開く
+                window.open(d.url, '_blank');
             }
         });
 
