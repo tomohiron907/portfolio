@@ -59,6 +59,7 @@ h1 {
     color: white;
     cursor: pointer;
     font-size: 14px;
+    font-family: Consolas, monospace;
     transition: all 0.3s ease;
 }
 

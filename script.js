@@ -153,7 +153,7 @@ function initializeGraph() {
         .attr("text-anchor", "middle")
         .attr("dy", d => -(d.size/2 + (isMobile ? 3 : 10)))  // スマホ版では間隔を小さく
         .style("fill", "white")
-        .style("font-family", "Arial, sans-serif")
+        .style("font-family", "Consolas, monospace")
         .style("font-size", "14px")
         .style("font-weight", "bold");
 
