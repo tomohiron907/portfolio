@@ -120,8 +120,6 @@ function initializeGraph() {
             .on("end", (event, d) => {
                 if (d.id !== "main") {
                     dragended(event, d);
-                    // ドラッグ終了時に全てのノードを元の透明度に戻す
-                    resetNodeOpacity();
                 }
             }))
         .style("cursor", d => d.id === "main" ? "default" : (d.url ? "pointer" : "default"))
@@ -196,10 +194,29 @@ function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+    
+    // 現在のフィルターを取得
+    const currentFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+    
+    // Allフィルターの場合は全てのノードを表示
+    if (currentFilter === 'all') {
+        resetNodeOpacity();
+    } else {
+        // それ以外の場合は、現在のフィルターに基づいて表示を更新
+        filterNodes(currentFilter);
+    }
 }
 
 // ノードの透明度を更新する関数
 function updateNodeOpacity(draggedNode) {
+    // 現在のフィルターを取得
+    const currentFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+    
+    // Allフィルター以外の場合は何もしない
+    if (currentFilter !== 'all') {
+        return;
+    }
+
     // ドラッグ中のノードと直接接続されているノードのIDを取得
     const connectedNodeIds = new Set();
     graphData.links.forEach(link => {
@@ -243,8 +260,56 @@ function resetNodeOpacity() {
     svg.selectAll(".node-label").style("opacity", 1);
 }
 
+// フィルタリング機能の実装
+function initializeFilterButtons() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // アクティブなボタンの更新
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+            filterNodes(filter);
+        });
+    });
+}
+
+function filterNodes(filter) {
+    node.style("opacity", d => {
+        if (d.id === "main" || filter === "all" || d.type === filter) {
+            return 1;
+        }
+        return 0.1;
+    });
+
+    link.style("opacity", d => {
+        if (filter === "all") {
+            return 1;
+        }
+        // 両方のノードがハイライトされている場合のみエッジを表示
+        const sourceHighlighted = d.source.id === "main" || d.source.type === filter;
+        const targetHighlighted = d.target.id === "main" || d.target.type === filter;
+        if (sourceHighlighted && targetHighlighted) {
+            return 1;
+        }
+        return 0.1;
+    });
+
+    svg.selectAll(".node-label")
+        .style("opacity", d => {
+            if (d.id === "main" || filter === "all" || d.type === filter) {
+                return 1;
+            }
+            return 0.1;
+        });
+}
+
 // Load the JSON data
 fetch('graph-data.json')
     .then(response => response.json())
-    .then(data => processGraphData(data))
+    .then(data => {
+        processGraphData(data);
+        initializeFilterButtons();  // フィルターボタンの初期化を追加
+    })
     .catch(error => console.error('Error loading the graph data:', error)); 

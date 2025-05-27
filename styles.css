@@ -38,6 +38,38 @@ h1 {
     height: 100%;
 }
 
+#filter-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    background-color: rgba(26, 26, 26, 0.8);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 15px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #444;
+}
+
+.filter-btn.active {
+    background-color: #666;
+}
+
 /* スマートフォン向けのスタイル */
 @media screen and (max-width: 768px) {
     h1 {
