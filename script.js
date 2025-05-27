@@ -22,6 +22,7 @@ function processGraphData(data) {
         size: (node.size || 30) * sizeMultiplier,
         image: node.image || null,
         url: node.url || null,
+        type: node.type || "Skill",  // デフォルトはSkill
         fx: node.id === "main" ? width/2 : null,
         fy: node.id === "main" ? height/2 : null
     }));

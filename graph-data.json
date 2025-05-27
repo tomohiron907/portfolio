@@ -6,7 +6,8 @@
             "connections": ["X"],
             "size": 100,
             "image": "resources/twitter_profile_image.PNG",
-            "url": ""
+            "url": "",
+            "type": "main"
         },
         {
             "id": "X",
@@ -14,7 +15,8 @@
             "connections": ["main", "G-coordinator"],
             "size": 100,
             "image": "resources/X_icon2.png",
-            "url": "https://x.com/tamutamu3D"
+            "url": "https://x.com/tamutamu3D",
+            "type": "SNS"
         },
         {
             "id": "GitHub",
@@ -22,7 +24,8 @@
             "connections": ["main"],
             "size": 60,
             "image": "resources/github-mark-white.png",
-            "url": "https://github.com/tomohiron907"
+            "url": "https://github.com/tomohiron907",
+            "type": "SNS"
         },
         {
             "id": "Instagram",
@@ -30,7 +33,8 @@
             "connections": ["main"],
             "size": 60,
             "image": "resources/instagram_icon.png",
-            "url": "https://www.instagram.com/tamutamu3d/?next=%2F"
+            "url": "https://www.instagram.com/tamutamu3d/?next=%2F",
+            "type": "SNS"
         },
         {
             "id": "Qiita",
@@ -38,7 +42,8 @@
             "connections": ["main", "Python"],    
             "size": 60,
             "image": "resources/qiita_icon.png",
-            "url": "https://qiita.com/tomohiron907"
+            "url": "https://qiita.com/tomohiron907",
+            "type": "SNS"
         },
         {
             "id": "G-coordinator",
@@ -46,7 +51,8 @@
             "connections": ["main", "GitHub", "Qiita"],    
             "size": 90,
             "image": "resources/G-coordinator_icon.png",
-            "url": "https://github.com/tomohiron907/G-coordinator"
+            "url": "https://github.com/tomohiron907/G-coordinator",
+            "type": "Project"
         },
         {
             "id": "Strecs3D",
@@ -54,7 +60,8 @@
             "connections": ["main", "GitHub"],    
             "size": 90,
             "image": "resources/Strecs3D_icon.png",
-            "url": "https://github.com/tomohiron907/Strecs3D"
+            "url": "https://github.com/tomohiron907/Strecs3D",
+            "type": "Project"
         },
         {
             "id": "Python",
@@ -62,7 +69,8 @@
             "connections": ["main", "GitHub", "G-coordinator"],    
             "size": 60,
             "image": "resources/Python_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "C++",
@@ -70,7 +78,8 @@
             "connections": ["main", "GitHub", "Strecs3D"],    
             "size": 60,
             "image": "resources/c++_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "HTML",
@@ -78,7 +87,8 @@
             "connections": ["GitHub"],    
             "size": 60,
             "image": "resources/html_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "CSS",
@@ -86,7 +96,8 @@
             "connections": ["GitHub"],    
             "size": 60,
             "image": "resources/css_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "JavaScript",
@@ -94,7 +105,8 @@
             "connections": ["GitHub"],    
             "size": 60,
             "image": "resources/javascript_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "Vim",
@@ -102,7 +114,8 @@
             "connections": ["main", "Python", "C++","Focus"],    
             "size": 60,
             "image": "resources/vim_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "3Dprinter",
@@ -110,7 +123,8 @@
             "connections": ["main", "G-coordinator", "Strecs3D", "X"],    
             "size": 80,
             "image": "resources/3Dprinter_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "Banbu",
@@ -118,7 +132,8 @@
             "connections": ["3Dprinter", "Strecs3D", "fusion"],    
             "size": 60,
             "image": "resources/bambustudio_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "Cura",
@@ -126,7 +141,8 @@
             "connections": ["3Dprinter", "Strecs3D", "fusion"],    
             "size": 60,
             "image": "resources/cura_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "fusion",
@@ -134,7 +150,8 @@
             "connections": ["3Dprinter"],    
             "size": 60,
             "image": "resources/fusion_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "rhinoceros",
@@ -142,7 +159,8 @@
             "connections": ["3Dprinter"],    
             "size": 70,
             "image": "resources/rhino_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "grasshopper",
@@ -150,7 +168,8 @@
             "connections": ["rhinoceros", "G-coordinator"],    
             "size": 60,
             "image": "resources/grasshopper_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "FreeCAD",
@@ -158,7 +177,8 @@
             "connections": ["3Dprinter", "Strecs3D", "FEA"],    
             "size": 60,
             "image": "resources/freecad_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "Focus",
@@ -166,7 +186,8 @@
             "connections": ["main", "GitHub"],    
             "size": 60,
             "image": "resources/Focus.jpg",
-            "url": "https://github.com/tomohiron907/Focus"
+            "url": "https://github.com/tomohiron907/Focus",
+            "type": "Project"
         },
         {
             "id": "KiCad",
@@ -174,7 +195,8 @@
             "connections": ["Focus"],    
             "size": 60,
             "image": "resources/kicad_icon.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "FEA",
@@ -182,7 +204,8 @@
             "connections": ["Strecs3D"],    
             "size": 80,
             "image": "resources/FEA.png",
-            "url": ""
+            "url": "",
+            "type": "Skill"
         },
         {
             "id": "flock_sim",
@@ -190,7 +213,8 @@
             "connections": ["GitHub", "HTML", "CSS", "JavaScript"],    
             "size": 60,
             "image": "resources/flock_sim.png",
-            "url": "https://tomohiron907.github.io/flock_simulation/"
+            "url": "https://tomohiron907.github.io/flock_simulation/",
+            "type": "Project"
         },
         {
             "id": "Xikipedia",
@@ -198,9 +222,8 @@
             "connections": ["GitHub", "HTML", "CSS", "JavaScript"],    
             "size": 60,
             "image": "resources/xikipedia.png",
-            "url": "https://tomohiron907.github.io/xikipedia/"
+            "url": "https://tomohiron907.github.io/xikipedia/",
+            "type": "Project"
         }
-        
-        
     ]
 } 
