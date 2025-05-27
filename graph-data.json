@@ -32,7 +32,7 @@
             "name": "Instagram",
             "connections": ["main"],
             "size": 60,
-            "image": "resources/instagram_icon.png",
+            "image": "resources/Instagram_icon.png",
             "url": "https://www.instagram.com/tamutamu3d/?next=%2F",
             "type": "SNS"
         },
@@ -68,7 +68,7 @@
             "name": "Python",    
             "connections": ["main", "GitHub", "G-coordinator"],    
             "size": 60,
-            "image": "resources/Python_icon.png",
+            "image": "resources/python_icon.png",
             "url": "",
             "type": "Skill"
         },
