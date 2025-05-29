@@ -177,7 +177,8 @@ function initializeGraph() {
         // ノードが画面外にはみ出ないように制限
         graphData.nodes.forEach(d => {
             // ヘッダーとフィルターボタンの領域を避ける
-            const minY = headerHeight + d.size/2;
+            const labelOffset = d.size/2 + (isMobile ? 3 : 10); // ラベルの高さを考慮
+            const minY = headerHeight + d.size/2 + labelOffset; // ラベルの高さを加算
             const maxY = height - filterButtonsHeight - d.size/2;
             const minX = margin + d.size/2;  // 左端の余白を追加
             const maxX = width - margin - d.size/2;  // 右端の余白を追加
