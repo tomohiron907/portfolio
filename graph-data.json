@@ -46,6 +46,15 @@
             "type": "SNS"
         },
         {
+            "id": "YouTube",
+            "name": "YouTube",
+            "connections": ["main" ],    
+            "size": 80,
+            "image": "resources/YouTube_icon.png",
+            "url": "https://youtube.com/channel/UCbiN9lFeDD9ZlVpepHiSqTg?si=Tr-EO2dny45YaLCx",
+            "type": "SNS"
+        },
+        {
             "id": "G-coordinator",
             "name": "G-coordinator",
             "connections": ["main", "GitHub", "Qiita"],    
@@ -84,7 +93,7 @@
         {
             "id": "HTML",
             "name": "HTML",    
-            "connections": ["GitHub"],    
+            "connections": ["GitHub", "Vim"],    
             "size": 60,
             "image": "resources/html_icon.png",
             "url": "",
@@ -93,7 +102,7 @@
         {
             "id": "CSS",
             "name": "CSS",    
-            "connections": ["GitHub"],    
+            "connections": ["GitHub", "Vim"],    
             "size": 60,
             "image": "resources/css_icon.png",
             "url": "",
@@ -102,7 +111,7 @@
         {
             "id": "JavaScript",
             "name": "JavaScript",    
-            "connections": ["GitHub"],    
+            "connections": ["GitHub", "Vim"],    
             "size": 60,
             "image": "resources/javascript_icon.png",
             "url": "",
@@ -192,7 +201,7 @@
         {
             "id": "KiCad",
             "name": "KiCad",    
-            "connections": ["Focus"],    
+            "connections": ["Focus", "main"],    
             "size": 60,
             "image": "resources/kicad_icon.png",
             "url": "",
@@ -210,7 +219,7 @@
         {
             "id": "flock_sim",
             "name": "flock_sim",    
-            "connections": ["GitHub", "HTML", "CSS", "JavaScript"],    
+            "connections": ["main", "GitHub", "HTML", "CSS", "JavaScript"],    
             "size": 60,
             "image": "resources/flock_sim.png",
             "url": "https://tomohiron907.github.io/flock_simulation/",
@@ -219,10 +228,28 @@
         {
             "id": "Xikipedia",
             "name": "Xikipedia",    
-            "connections": ["GitHub", "HTML", "CSS", "JavaScript"],    
+            "connections": ["main", "GitHub", "HTML", "CSS", "JavaScript"],    
             "size": 60,
             "image": "resources/xikipedia.png",
             "url": "https://tomohiron907.github.io/xikipedia/",
+            "type": "Project"
+        },
+        {
+            "id": "shikanoko",
+            "name": "shikanoko",    
+            "connections": ["main", "GitHub", "C++"],    
+            "size": 60,
+            "image": "resources/shikanoko_icon.png",
+            "url": "https://github.com/tomohiron907/shikanoko/tree/main",
+            "type": "Project"
+        },
+        {
+            "id": "logistics",
+            "name": "logistics",    
+            "connections": ["main", "GitHub", "JavaScript"],    
+            "size": 60,
+            "image": "resources/logistics_icon.png",
+            "url": "https://tomohiron907.github.io/logistics/",
             "type": "Project"
         }
     ]
