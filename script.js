@@ -124,7 +124,13 @@ function initializeGraph() {
                     dragended(event, d);
                 }
             }))
-        .style("cursor", d => d.id === "main" ? "pointer" : (d.url ? "pointer" : "default"))
+        .style("cursor", d => d.id === "main" ? "pointer" : (d.url ? "pointer" : "default"));
+
+    // Add transparent circle for larger drag area (before the image)
+    node.append("circle")
+        .attr("r", d => d.size * 1.5)  // ノードの1.5倍のサイズ
+        .attr("fill", "transparent")
+        .attr("stroke", "none")
         .on("click", (event, d) => {
             if (d.id === "main") {
                 window.location.href = "about.html";
@@ -140,7 +146,8 @@ function initializeGraph() {
         .attr("height", d => d.size)
         .attr("x", d => -d.size/2)
         .attr("y", d => -d.size/2)
-        .attr("clip-path", d => `url(#clip-${d.id})`);
+        .attr("clip-path", d => `url(#clip-${d.id})`)
+        .style("pointer-events", "none");  // 画像のポインターイベントを無効化
 
     // Add node labels
     svg.append("g")
