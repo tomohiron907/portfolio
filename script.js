@@ -124,9 +124,11 @@ function initializeGraph() {
                     dragended(event, d);
                 }
             }))
-        .style("cursor", d => d.id === "main" ? "default" : (d.url ? "pointer" : "default"))
+        .style("cursor", d => d.id === "main" ? "pointer" : (d.url ? "pointer" : "default"))
         .on("click", (event, d) => {
-            if (d.url) {
+            if (d.id === "main") {
+                window.location.href = "about.html";
+            } else if (d.url) {
                 window.open(d.url, '_blank');
             }
         });
