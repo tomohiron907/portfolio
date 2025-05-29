@@ -136,8 +136,8 @@
             "type": "Skill"
         },
         {
-            "id": "Banbu",
-            "name": "Banbu",    
+            "id": "Bambu",
+            "name": "Bambu",    
             "connections": ["3Dprinter", "Strecs3D", "fusion"],    
             "size": 60,
             "image": "resources/bambustudio_icon.png",
