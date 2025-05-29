@@ -83,8 +83,8 @@ function initializeGraph() {
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("x", d3.forceX(width / 2).strength(0.05 * forceMultiplier))  // 位置固定の力を弱める
         .force("y", d3.forceY(height / 2).strength(0.05 * forceMultiplier))  // 位置固定の力を弱める
-        .alphaDecay(0.03)  // シミュレーションの減衰率を下げて、より長く動き続けるように
-        .velocityDecay(0.2);  // 速度の減衰率を下げて、よりスムーズに停止するように
+        .alphaDecay(0.05)  // シミュレーションの減衰率を下げて、より長く動き続けるように
+        .velocityDecay(0.4);  // 速度の減衰率を下げて、よりスムーズに停止するように
 
     // Create the links
     link = svg.append("g")
