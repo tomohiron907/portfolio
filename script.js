@@ -135,7 +135,12 @@ function initializeGraph() {
             if (d.id === "main") {
                 window.location.href = "about.html";
             } else if (d.url) {
-                window.open(d.url, '_blank');
+                // スマートフォンの場合は直接遷移、PCの場合は新しいタブで開く
+                if (window.innerWidth <= 768) {
+                    window.location.href = d.url;
+                } else {
+                    window.open(d.url, '_blank');
+                }
             }
         });
 
