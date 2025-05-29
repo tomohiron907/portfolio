@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,22 +23,26 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 60px;
         }
 
         .back-button {
             position: fixed;
             top: 20px;
             left: 20px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
+            padding: 8px 15px;
+            background-color: rgba(51, 51, 51, 0.7);
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 4px;
             transition: background-color 0.3s;
+            font-size: 0.9em;
+            opacity: 0.8;
         }
 
         .back-button:hover {
-            background-color: #444;
+            background-color: rgba(68, 68, 68, 0.8);
+            opacity: 1;
         }
 
         .section {
@@ -79,6 +83,44 @@
             text-align: center;
         }
 
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background-color: rgba(51, 51, 51, 0.7);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .language-switch:hover {
+            background-color: rgba(68, 68, 68, 0.8);
+            opacity: 1;
+        }
+
+        .ja-content {
+            display: none;
+        }
+
+        .en-content {
+            display: block;
+            font-family: Consolas, monospace;
+        }
+
+        html[lang="ja"] .ja-content {
+            display: block;
+        }
+
+        html[lang="ja"] .en-content {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -96,30 +138,50 @@
 </head>
 <body>
     <a href="index.html" class="back-button">← Back to Graph</a>
+    <button class="language-switch" onclick="toggleLanguage()">English / 日本語</button>
     
     <div class="container">
         <div class="header">
-            <h1>About Me</h1>
+            <h1 class="ja-content">About Me</h1>
+            <h1 class="en-content">About Me</h1>
         </div>
 
         <div class="section">
-            <h2>自己紹介</h2>
-                <p>Tomohiro TANIGUCHI(谷口　朝洋)</p>
-                <p>私は、3Dプリンタに関連するソフトウェアの開発を中心に、新しいものづくりのかたちを探求しています。3Dプリンタ・ソフトウェア・機械工学という三つのフィールドを軸に開発を行っています。</p>
+            <h2 class="ja-content">自己紹介</h2>
+            <h2 class="en-content">Introduction</h2>
+            <p class="ja-content">Tomohiro TANIGUCHI(谷口　朝洋)</p>
+            <p class="en-content">Tomohiro TANIGUCHI</p>
+            <p class="ja-content">私は、3Dプリンタに関連するソフトウェアの開発を中心に、新しいものづくりのかたちを探求しています。3Dプリンタ・ソフトウェア・機械工学という三つのフィールドを軸に開発を行っています。</p>
+            <p class="en-content">I am exploring new forms of manufacturing, focusing on software development related to 3D printers. I develop based on three fields: 3D printing, software, and mechanical engineering.</p>
         </div>
 
         <div class="section">
-            <h2>経歴</h2>
-            <p>2024年 - 現在: 慶應義塾大学　修士課程</p>
-            <p>2024年 - 現在: Member, Digital Archi</p>
-            <p>2020年 - 2024年: 大阪府立大学　機械工学専攻</p>
+            <h2 class="ja-content">経歴</h2>
+            <h2 class="en-content">Experience</h2>
+            <p class="ja-content">2024年 - 現在: 慶應義塾大学　修士課程</p>
+            <p class="en-content">2024 - Present: Master's Program, Keio University</p>
+            <p class="ja-content">2024年 - 現在: Member, Digital Archi</p>
+            <p class="en-content">2024 - Present: Member, Digital Archi</p>
+            <p class="ja-content">2020年 - 2024年: 大阪府立大学　機械工学専攻</p>
+            <p class="en-content">2020 - 2024: Mechanical Engineering, Osaka Prefecture University</p>
         </div>
 
         <div class="section">
             <h2>Awards</h2>
-            <p>2023-11: 4D Functional Fabriacation Award </p>
-            <p>2024-03: 日本機械工学会　畠山賞</p>
+            <p class="en-content">2023-11: 4D Functional Fabriacation Award </p>
+            <p class="ja-content">2023-11: 4D Functional Fabriacation 学会 Award </p>
+            <p class="ja-content">2024-03: 日本機械工学会　畠山賞</p>
+            <p class="en-content">2024-03: Hatakeyama Award, The Japan Society of Mechanical Engineers</p>
         </div>
     </div>
+
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('lang');
+            const newLang = currentLang === 'ja' ? 'en' : 'ja';
+            html.setAttribute('lang', newLang);
+        }
+    </script>
 </body>
 </html> 
