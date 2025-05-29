@@ -53,6 +53,7 @@ const width = window.innerWidth;
 const height = window.innerHeight;
 const headerHeight = 60; // ヘッダーの高さ
 const filterButtonsHeight = 60; // フィルターボタンの高さ
+const margin = 30; // 画面端からの余白
 const svg = d3.select("#graph-container")
     .append("svg")
     .attr("width", width)
@@ -178,8 +179,8 @@ function initializeGraph() {
             // ヘッダーとフィルターボタンの領域を避ける
             const minY = headerHeight + d.size/2;
             const maxY = height - filterButtonsHeight - d.size/2;
-            const minX = d.size/2;
-            const maxX = width - d.size/2;
+            const minX = margin + d.size/2;  // 左端の余白を追加
+            const maxX = width - margin - d.size/2;  // 右端の余白を追加
             
             d.x = Math.max(minX, Math.min(maxX, d.x));
             d.y = Math.max(minY, Math.min(maxY, d.y));
